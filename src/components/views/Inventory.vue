@@ -1,6 +1,7 @@
 <script setup>
 import InventoryAlert from '../layout/InventoryAlert.vue';
 import InventaryCard from '../layout/InventoryCard.vue';
+import InvertoryTable from '../layout/InvertoryTable.vue';
 import { ArrowDownToLine } from 'lucide-vue-next';
 
 </script>
@@ -15,6 +16,8 @@ import { ArrowDownToLine } from 'lucide-vue-next';
             </button>
         </div>
         <InventaryCard />
-        <InventoryAlert/>
+        <InventoryAlert />
+        <InvertoryTable />
+
     </div>
 </template>
