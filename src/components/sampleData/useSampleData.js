@@ -1,5 +1,6 @@
 
 
+// data.js
 export const products = [
   { id: 1, name: "Remote Car", category: "Toys & Games", price: 25.99, stock: 0, status: "out of stock" },
   { id: 2, name: "Drone", category: "Electronics", price: 49.99, stock: 3, status: "low stock" },
@@ -11,8 +12,7 @@ export const products = [
   { id: 8, name: "Gaming Console", category: "Electronics", price: 299.99, stock: 0, status: "out of stock" },
   { id: 9, name: "Puzzle Set", category: "Toys & Games", price: 5.99, stock: 8, status: "in stock" },
   { id: 10, name: "Vacuum Cleaner", category: "Home & Kitchen", price: 120.00, stock: 10, status: "in stock" }
-]
-
+];
 
 export function useSampleData() {
   const totalProducts = products.length
