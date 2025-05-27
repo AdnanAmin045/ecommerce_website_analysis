@@ -10,8 +10,6 @@ export const products = [
   { id: 8, name: "Gaming Console", category: "Electronics", price: 299.99, stock: 0, status: "out of stock" },
   { id: 9, name: "Puzzle Set", category: "Toys & Games", price: 5.99, stock: 8, status: "in stock" },
   { id: 10, name: "Vacuum Cleaner", category: "Home & Kitchen", price: 120.00, stock: 10, status: "in stock" },
-
-  // New products added
   { id: 11, name: "Bluetooth Headphones", category: "Electronics", price: 79.99, stock: 20, status: "in stock" },
   { id: 12, name: "Coffee Maker", category: "Home & Kitchen", price: 45.00, stock: 5, status: "low stock" },
   { id: 13, name: "Action Figure", category: "Toys & Games", price: 10.99, stock: 12, status: "in stock" },

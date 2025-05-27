@@ -23,7 +23,7 @@ const setTimeRange = (range) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-neutral-800 p-10 text-white transition-all duration-300">
+  <div class="min-h-screen bg-neutral-800 p-5 sm:p-10 text-white transition-all duration-300">
     
     <main class="dashboard-container pb-20">
       <!-- Stats Cards -->
