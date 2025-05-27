@@ -39,7 +39,7 @@ const statInfo = [
 
 
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-3 sm:p-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <div v-for="(stat, index) in statInfo" :key="index"
       class="flex items-center justify-between px-4 py-6 bg-neutral-700 rounded-lg shadow-md">
       
