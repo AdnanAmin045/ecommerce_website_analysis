@@ -1,12 +1,27 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { Menu, Search, Bell, ChevronDown } from 'lucide-vue-next'
+import SideMenu from '../layout/AppResponsiveSideBar.vue'
 
-// State for dropdowns
+const isMobile = ref(false)
+const showSideMenu = ref(false)
+
+const updateIsMobile = () => {
+  isMobile.value = window.innerWidth < 640
+}
+
+onMounted(() => {
+  updateIsMobile()
+  window.addEventListener('resize', updateIsMobile)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateIsMobile)
+})
+
 const showNotifications = ref(false)
 const showUserMenu = ref(false)
 
-// Toggle functions
 const toggleNotifications = () => {
   showNotifications.value = !showNotifications.value
   showUserMenu.value = false
@@ -15,7 +30,6 @@ const toggleUserMenu = () => {
   showUserMenu.value = !showUserMenu.value
   showNotifications.value = false
 }
-
 </script>
 
 <template>
@@ -23,8 +37,7 @@ const toggleUserMenu = () => {
     <!-- Left Section -->
     <div class="flex items-center gap-4">
       <h2 class="text-xl hidden sm:flex font-bold text-primary-400 whitespace-nowrap">Ecommerce Website</h2>
-      <Menu class="w-6 h-6 sm:hidden text-gray-400 cursor-pointer" />
-
+      <Menu class="w-6 h-6 sm:hidden text-gray-400 cursor-pointer" @click="showSideMenu = true" />
       <!-- Search Input -->
       <div class="relative hidden sm:block">
         <input type="text" placeholder="Search..."
@@ -35,14 +48,17 @@ const toggleUserMenu = () => {
 
     <!-- Right Section -->
     <div class="flex items-center gap-4 relative mt-2 md:mt-0">
-      <div class="p-2 rounded-full cursor-pointer w-10 h-10 hover:bg-neutral-600 flex items-center justify-center relative"
+      <div
+        class="p-2 rounded-full cursor-pointer w-10 h-10 hover:bg-neutral-600 flex items-center justify-center relative"
         @click="toggleNotifications">
         <Bell class="w-6 h-6 text-gray-400" />
         <div class="h-2 w-2 rounded-full bg-red-500 absolute top-0 right-0"></div>
 
         <!-- Notification Dropdown -->
-        <div v-show="showNotifications"
-          class="absolute right-0 top-12 w-80 bg-white dark:bg-neutral-800 shadow-lg rounded-lg py-2 z-50">
+        <div v-show="showNotifications" :class="[
+          'absolute bg-white dark:bg-neutral-800 shadow-lg rounded-lg py-2 z-50',
+          isMobile ? 'left-1/2 top-full transform -translate-x-1/2 mt-2 w-[90vw]' : 'right-0 top-12 w-80'
+        ]">
           <div class="px-4 py-2 border-b border-gray-200 dark:border-neutral-700">
             <h6 class="font-semibold">Notifications</h6>
           </div>
@@ -68,6 +84,7 @@ const toggleUserMenu = () => {
             <a href="#" class="text-sm text-primary-500 hover:text-primary-600">View all notifications</a>
           </div>
         </div>
+
       </div>
 
       <!-- User Menu -->
@@ -92,4 +109,6 @@ const toggleUserMenu = () => {
       </div>
     </div>
   </div>
+
+  <SideMenu v-if="isMobile" :isOpen="showSideMenu" @close="showSideMenu = false" />
 </template>

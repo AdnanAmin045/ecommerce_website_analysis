@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import { Line } from 'vue-chartjs';
 import {
   Chart as ChartJS,
@@ -11,7 +11,7 @@ import {
   PointElement,
   CategoryScale,
 } from 'chart.js';
-import { getSalesByDate, getSalesByCategory } from '../sampleData/data';
+import { getSalesByCategory } from '../sampleData/data';
 
 ChartJS.register(
   CategoryScale,
@@ -33,9 +33,6 @@ const props = defineProps({
     default: null
   }
 });
-
-const salesByDate = getSalesByDate();
-const sortedDates = Object.keys(salesByDate).sort();
 
 const chartData = ref({
   labels: [],
@@ -66,9 +63,7 @@ const chartOptions = ref({
       },
       ticks: {
         color: '#fff',
-        callback: (value) => {
-          return '$' + value;
-        }
+        callback: (value) => '$' + value
       }
     },
     x: {
@@ -83,9 +78,7 @@ const chartOptions = ref({
   plugins: {
     tooltip: {
       callbacks: {
-        label: (context) => {
-          return 'Revenue: $' + context.parsed.y;
-        }
+        label: (context) => 'Revenue: $' + context.parsed.y
       }
     },
     legend: {
@@ -95,20 +88,18 @@ const chartOptions = ref({
 });
 
 const prepareChartData = () => {
-  let filteredSales = props.category 
+  let filteredSales = props.category
     ? getSalesByCategory(props.category)
     : getSalesByCategory();
-  
+
   const groupedSales = {};
   filteredSales.forEach(sale => {
-    if (!groupedSales[sale.date]) {
-      groupedSales[sale.date] = 0;
-    }
+    if (!groupedSales[sale.date]) groupedSales[sale.date] = 0;
     groupedSales[sale.date] += sale.revenue;
   });
-  
+
   let dates = Object.keys(groupedSales).sort();
-  
+
   if (props.timeRange === 'daily') {
     dates = dates.slice(-7);
   } else if (props.timeRange === 'weekly') {
@@ -116,12 +107,12 @@ const prepareChartData = () => {
   } else if (props.timeRange === 'monthly') {
     dates = dates.filter(date => date.includes('-01'));
   }
-  
+
   const formattedDates = dates.map(date => {
     const d = new Date(date);
     return `${d.getMonth() + 1}/${d.getDate()}`;
   });
-  
+
   chartData.value = {
     labels: formattedDates,
     datasets: [
@@ -151,7 +142,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-64">
+  <div class="w-full max-w-3xl mx-auto aspect-[16/9]">
     <Line :data="chartData" :options="chartOptions" />
   </div>
 </template>

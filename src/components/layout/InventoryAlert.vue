@@ -3,13 +3,16 @@ import { AlertTriangle } from 'lucide-vue-next';
 </script>
 
 <template>
-  <div class="flex items-start gap-4 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-5 rounded-md shadow-sm">
-    <div class="mt-1">
+  <div class="flex flex-col sm:flex-row items-start gap-4 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 sm:p-5 rounded-md shadow-sm">
+    
+    <!-- Icon -->
+    <div class="mt-1 flex-shrink-0">
       <AlertTriangle class="w-6 h-6 text-yellow-600" />
     </div>
 
+    <!-- Text Content -->
     <div>
-      <h2 class="text-lg font-semibold">Low Stock Alert</h2>
+      <h2 class="text-base sm:text-lg font-semibold">Low Stock Alert</h2>
       <p class="mt-1 text-sm text-yellow-700">
         The following items are running low and need restocking:
       </p>
@@ -30,5 +33,6 @@ import { AlertTriangle } from 'lucide-vue-next';
         </li>
       </ol>
     </div>
+    
   </div>
 </template>

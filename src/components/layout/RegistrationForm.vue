@@ -114,19 +114,19 @@ function handleSubmit(event){
       <!-- Product Image -->
       <h2 class="text-2xl font-semibold text-white md:col-span-2">Product Image</h2>
 
-      <div class="flex flex-col md:flex-row gap-6 md:col-span-2">
+      <div class="flex flex-col md:flex-row gap-6 md:col-span-2 w-full">
         <!-- Preview Box -->
         <div v-if="formValues.productImage"
-          class="w-64 h-40 border-2 border-dashed border-gray-400 rounded-md bg-neutral-700 flex items-center justify-center">
+          class="w-full md:w-1/2 h-40 border-2 border-dashed border-gray-400 rounded-md bg-neutral-700 flex items-center justify-center">
           <img :src="imagePreview" alt="Preview"
             class="w-full h-full object-cover rounded-md" />
         </div>
 
         <!-- Upload Box -->
         <label for="productImage"
-          class="flex flex-col items-center justify-center w-64 h-40 border-2 border-dashed border-gray-400 rounded-md cursor-pointer bg-neutral-700 hover:border-primary-500 transition duration-200">
+          class="w-full md:w-1/2 h-40 flex flex-col items-center justify-center border-2 border-dashed border-gray-400 rounded-md cursor-pointer bg-neutral-700 hover:border-primary-500 transition duration-200">
           <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
           </svg>
           <span class="text-sm text-gray-400">Click to upload image</span>
@@ -139,7 +139,7 @@ function handleSubmit(event){
       </p>
 
       <!-- Submit & Reset Buttons -->
-      <div class="md:col-span-2 flex justify-end gap-4">
+      <div class="md:col-span-2 flex flex-col md:flex-row justify-end gap-4">
         <button type="reset" @click="handleReset"
           class="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition duration-300">
           Reset
@@ -152,6 +152,7 @@ function handleSubmit(event){
     </form>
   </div>
 </template>
+
 <style>
 .my-custom-toast {
   width: 300px !important;

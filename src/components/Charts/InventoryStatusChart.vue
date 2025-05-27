@@ -93,7 +93,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-64">
+  <div class="w-full max-w-md mx-auto aspect-square">
     <Pie :data="chartData" :options="chartOptions" />
   </div>
 </template>

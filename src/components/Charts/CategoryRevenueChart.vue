@@ -58,12 +58,12 @@ const chartOptions = ref({
         padding: 20,
         usePointStyle: true,
         pointStyle: 'circle',
-        color: 'white' // 👈 white legend text
+        color: 'white' // white legend text
       }
     },
     tooltip: {
-      bodyColor: 'white',  // 👈 white tooltip body
-      titleColor: 'white', // 👈 white tooltip title
+      bodyColor: 'white',  // white tooltip body
+      titleColor: 'white', // white tooltip title
       callbacks: {
         label: (context) => {
           const label = context.label || '';
@@ -126,7 +126,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-64">
+  <div class="w-full max-w-md mx-auto aspect-square">
     <Doughnut :data="chartData" :options="chartOptions" />
   </div>
 </template>

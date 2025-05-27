@@ -5,16 +5,21 @@ import InvertoryTable from '../layout/InvertoryTable.vue';
 import { ArrowDownToLine } from 'lucide-vue-next';
 
 </script>
-
 <template>
-    <div class="p-10 flex flex-col space-y-5">
-        <div class="flex justify-between items-center">
+    <div class="p-5 sm:p-10 flex flex-col space-y-5">
+
+        <!-- Header: Stack on xs, inline on sm+ -->
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-0">
             <h4 class="text-2xl text-white font-bold">Inventory Management</h4>
-            <button class="px-3 py-2 border border-gray-400 flex items-center gap-3 rounded-md hover:bg-neutral-700">
-                <ArrowDownToLine class="w-4 h-4 text-white" />
-                <span class="text-md text-white"> Export</span>
+
+            <button
+                class="px-3 py-2 border border-gray-400 flex items-center gap-2 rounded-md hover:bg-neutral-700 text-white text-sm sm:text-md"
+                type="button">
+                <ArrowDownToLine class="w-4 h-4" />
+                <span>Export</span>
             </button>
         </div>
+
         <InventaryCard />
         <InventoryAlert />
         <InvertoryTable />
